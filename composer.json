@@ -1,6 +1,6 @@
 {
   "name": "hyva-themes/magento2-header",
-  "description": "Restructure the default hyva header container.",
+  "description": "Restructured default hyva header",
   "type": "magento2-module",
   "require": {
     "magento/framework": "*",
@@ -20,7 +20,5 @@
     "psr-4": {
       "Hyva\\Header\\": "src/"
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": false
+  }
 }
