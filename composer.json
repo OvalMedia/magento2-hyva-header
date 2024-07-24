@@ -1,5 +1,5 @@
 {
-  "name": "hyva-themes/magento2-header",
+  "name": "ovalmedia/magento2-hyva-header",
   "description": "Restructured default hyva header",
   "type": "magento2-module",
   "require": {
