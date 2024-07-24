@@ -1,0 +1,25 @@
+<?php
+declare(strict_types=1);
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HeroiconsOutline;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Escaper $escaper */
+/** @var Template $block */
+/** @var ViewModelRegistry $viewModels */
+
+/** @var HeroiconsOutline $heroicons */
+$heroicons = $viewModels->require(HeroiconsOutline::class);
+?>
+<button
+    id="menu-search-icon"
+    class="rounded p-1 hover:bg-primary/10 outline-offset-2"
+    @click.prevent="drawerOpen('hyva-drawers-search');$dispatch('search-open');"
+    aria-label="<?= $escaper->escapeHtmlAttr(__('Toggle search form')) ?>"
+    aria-haspopup="true"
+    :aria-expanded="drawerState('hyva-drawers-search')"
+    x-ref="searchButton">
+    <?= $heroicons->searchHtml("md:h-6 md:w-6", 28, 28, ["aria-hidden" => "true"]) ?>
+</button>

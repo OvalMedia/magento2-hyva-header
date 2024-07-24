@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+    General rule of thumb: use containers to organize the STRUCTURE of the page.
+    This is where the classes for rows and grids should be put. Do not put those classes
+    inside phtml files of the elements as this would have them rely on their placement in the
+    page. You could not move an element from one point of the theme to another without modifying
+    the phtml itself.
+    Inside the phtml you then can add styling classes without having to worry too much about
+    where it is being rendered on the page.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!-- Enable sticky header -->
+    <update handle="sticky_header"/>
+    <body>
+        <referenceBlock name="header-content" remove="true" />
+
+        <!--
+            Maybe 'left', 'right' and 'center' are not really suitable as they are moved around
+            anyway.
+        -->
+        <referenceContainer name="header.container" htmlTag="header" htmlClass="page-header">
+            <container name="header.content" htmlTag="div" htmlId="header" htmlClass="flex relative z-30 w-full border-b shadow bg-container-lighter border-container-lighter">
+                <container name="header.content.inner" htmlTag="div" htmlClass="container flex flex-wrap lg:flex-nowrap items-center justify-between w-full px-6 py-3 mx-auto mt-0">
+                    <container name="header.content.left" htmlTag="div" htmlClass="w-1/3 lg:w-1/5 order-2 lg:order-1 flex md:block items-center md:items-start" />
+                    <container name="header.content.center" htmlTag="div" htmlClass="w-1/3 lg:w-3/5 lg:order-2" />
+                    <container name="header.content.right" htmlTag="div" htmlClass="w-1/3 lg:w-1/5 order-3" />
+                </container>
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="header.content.left">
+            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo" template="Hyva_Header::html/header/logo.phtml">
+                <arguments>
+                    <argument name="logoPathResolver" xsi:type="object">Hyva\Theme\ViewModel\Logo\LogoPathResolver</argument>
+                    <!-- These values are used if no width or height is set in the adminhtml theme configuration -->
+                    <argument name="logo_width" xsi:type="number">189</argument>
+                    <argument name="logo_height" xsi:type="number">64</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <!-- Search -->
+        <!--referenceContainer name="header.content">
+            <block name="header.content.search" template="Hyva_Header::html/header/search.phtml" />
+        </referenceContainer-->
+
+        <referenceContainer name="header.content.center">
+            <block name="topmenu_generic" as="topmenu" template="Magento_Theme::html/header/topmenu.phtml" ttl="3600">
+                <arguments>
+                    <argument name="cache_lifetime" xsi:type="string">3600</argument>
+                </arguments>
+                <!--block name="topmenu_mobile" as="topmenu.mobile" template="Magento_Theme::html/header/menu/mobile.phtml" /-->
+                <block name="topmenu_desktop" as="topmenu.desktop" template="Magento_Theme::html/header/menu/desktop.phtml" />
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="header.content.right">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header-links flex items-center h-full justify-end</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="header.links">
+            <block name="header.links.compare" template="Hyva_Header::html/header/links/compare.phtml">
+                <arguments>
+                    <argument name="position" xsi:type="string">1</argument>
+                </arguments>
+            </block>
+
+            <block name="header.links.search" template="Hyva_Header::html/header/links/search.phtml">
+                <arguments>
+                    <argument name="position" xsi:type="string">2</argument>
+                </arguments>
+            </block>
+
+            <!-- In case this will be built from scratch -->
+            <!--block name="header.links.account" template="Hyva_Header::html/header/links/account.phtml">
+                <arguments>
+                    <argument name="position" xsi:type="string">3</argument>
+                </arguments>
+            </block-->
+
+            <block name="header.links.cart" template="Hyva_Header::html/header/links/cart.phtml">
+                <arguments>
+                    <argument name="position" xsi:type="string">4</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <!-- @see Magento_Customer/layout/default.xml -->
+        <move element="header.customer" destination="header.links" />
+
+        <referenceBlock name="header.customer">
+            <arguments>
+                <argument name="position" xsi:type="string">3</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!-- Some tailwind changes & reduced HTML -->
+        <referenceBlock name="topmenu_desktop" template="Hyva_Header::html/header/menu/desktop.phtml" />
+
+    </body>
+</page>

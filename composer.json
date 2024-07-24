@@ -1,0 +1,26 @@
+{
+  "name": "hyva-themes/magento2-header",
+  "description": "Restructure the default hyva header container.",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "hyva-themes/magento2-default-theme": "*"
+  },
+  "authors": [
+    {
+      "name": "Ole Hornauer",
+      "email": "oh@oval-media.de"
+    }
+  ],
+  "license": "see LICENSE.md",
+  "autoload": {
+    "files": [
+      "src/registration.php"
+    ],
+    "psr-4": {
+      "Hyva\\Header\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": false
+}

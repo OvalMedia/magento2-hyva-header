@@ -1,0 +1,8 @@
+<div class="absolute z-10 w-full border-t shadow-sm bg-container-lighter border-container-lighter"
+     id="search-content"
+     x-cloak x-show="searchOpen"
+     @click.outside="searchOpen = false"
+     @keydown.escape="searchOpen = false; $refs.searchButton.focus();"
+>
+    <?= $block->getChildHtml('header-search'); ?>
+</div>

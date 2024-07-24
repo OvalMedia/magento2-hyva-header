@@ -1,0 +1,19 @@
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+?>
+<div x-data="stickyHeader()" class="z-10 transition ease-in-out sticky top-0 transform-gpu lg:translate-y-0" :class="isHidden ? '-translate-y-full' : 'translate-y-0'" @scroll.window="scroll">
+<?= $block->getChildHtml() ?>
+</div>
+<script>
+function stickyHeader() {
+    return {
+        lastOffset: 0,
+        isHidden: false,
+        scroll() {
+            let offset = window.pageYOffset;
+            this.isHidden = offset > this.lastOffset;
+            this.lastOffset = offset;
+        }
+    }
+}
+</script>
