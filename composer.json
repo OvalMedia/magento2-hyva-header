@@ -2,17 +2,13 @@
   "name": "ovalmedia/magento2-hyva-header",
   "description": "Restructured default hyva header",
   "type": "magento2-module",
-  "require": {
-    "magento/framework": "*",
-    "hyva-themes/magento2-default-theme": "*"
-  },
   "authors": [
     {
       "name": "Ole Hornauer",
       "email": "oh@oval-media.de"
     }
   ],
-  "license": "see LICENSE.md",
+  "license": "MIT",
   "autoload": {
     "files": [
       "src/registration.php"
