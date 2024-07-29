@@ -101,5 +101,6 @@
         <!-- Some tailwind changes & reduced HTML -->
         <referenceBlock name="topmenu_desktop" template="Hyva_Header::html/header/menu/desktop.phtml" />
 
+        <move element="authentication-popup" destination="before.body.end"/>
     </body>
 </page>
