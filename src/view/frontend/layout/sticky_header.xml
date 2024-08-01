@@ -2,10 +2,9 @@
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
     <!--
         Converts the HTML tags from 'header.container' so it's contents can be rendered inside a block HTML.
-        @todo: top-container (contains breadcrumbs) is now covered by #maincontent
     -->
     <referenceContainer name="page.wrapper">
-        <block name="header.container.block" as="header_container_block" before="main.content" template="Hyva_Header::html/header/header-container-block.phtml"/>
+        <block name="header.container.block" as="header_container_block" before="-" template="Hyva_Header::html/header/header-container-block.phtml"/>
     </referenceContainer>
     <move element="header.container" destination="header.container.block"/>
 </layout>
