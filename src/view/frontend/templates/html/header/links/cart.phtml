@@ -44,7 +44,7 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
         <?php /*@toggle-cart.window="toggleCart($event)"*/ ?>
         :aria-expanded="drawerState('hyva-cart-drawer')"
         aria-haspopup="dialog"
-        @click="drawerOpen('hyva-cart-drawer')"
+        @click="drawerOpen('hyva-cart-drawer', <?= ($block->getScrollLock() == 'false' ? 'false' : 'true') ?>)"
     <?php else: ?>
         href="<?= $escaper->escapeUrl($block->getUrl('checkout/cart/index')) ?>"
         title="<?= $escaper->escapeHtmlAttr(__('View cart')) ?>"

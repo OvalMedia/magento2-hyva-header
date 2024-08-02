@@ -40,9 +40,9 @@
         </referenceContainer>
 
         <!-- Search -->
-        <!--referenceContainer name="header.content">
+        <referenceContainer name="header.content">
             <block name="header.content.search" template="Hyva_Header::html/header/search.phtml" />
-        </referenceContainer-->
+        </referenceContainer>
 
         <referenceContainer name="header.content.center">
             <block name="topmenu_generic" as="topmenu" template="Magento_Theme::html/header/topmenu.phtml" ttl="3600">
@@ -72,6 +72,8 @@
             <block name="header.links.search" template="Hyva_Header::html/header/links/search.phtml">
                 <arguments>
                     <argument name="position" xsi:type="string">2</argument>
+                    <!-- Do not prevent the body from scrolling while visible -->
+                    <argument name="scroll_lock" xsi:type="string">false</argument>
                 </arguments>
             </block>
 
@@ -85,6 +87,7 @@
             <block name="header.links.cart" template="Hyva_Header::html/header/links/cart.phtml">
                 <arguments>
                     <argument name="position" xsi:type="string">4</argument>
+                    <argument name="scroll_lock" xsi:type="string">false</argument>
                 </arguments>
             </block>
         </referenceBlock>

@@ -16,7 +16,7 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
 <button
     id="menu-search-icon"
     class="rounded p-1 hover:bg-primary/10 outline-offset-2"
-    @click.prevent="drawerOpen('hyva-drawers-search');$dispatch('search-open');"
+    @click.prevent="drawerToggle('hyva-drawers-search', <?= ($block->getScrollLock() == 'false' ? 'false' : 'true') ?>); $dispatch('search-open');"
     aria-label="<?= $escaper->escapeHtmlAttr(__('Toggle search form')) ?>"
     aria-haspopup="true"
     :aria-expanded="drawerState('hyva-drawers-search')"
