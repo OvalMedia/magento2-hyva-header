@@ -87,7 +87,8 @@
             <block name="header.links.cart" template="Hyva_Header::html/header/links/cart.phtml">
                 <arguments>
                     <argument name="position" xsi:type="string">4</argument>
-                    <argument name="scroll_lock" xsi:type="string">false</argument>
+                    <!-- To keep body scrolling enabled while visible set 'scroll_lock' to false -->
+                    <!--argument name="scroll_lock" xsi:type="string">false</argument-->
                 </arguments>
             </block>
         </referenceBlock>

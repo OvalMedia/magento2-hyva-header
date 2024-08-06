@@ -44,7 +44,7 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
         <?php /*@toggle-cart.window="toggleCart($event)"*/ ?>
         :aria-expanded="drawerState('hyva-cart-drawer')"
         aria-haspopup="dialog"
-        @click="drawerOpen('hyva-cart-drawer', <?= ($block->getScrollLock() == 'false' ? 'false' : 'true') ?>)"
+        @click="drawerOpen('hyva-cart-drawer', <?= ($block->getScrollLock() === 'false' ? 'false' : 'true') ?>)"
     <?php else: ?>
         href="<?= $escaper->escapeUrl($block->getUrl('checkout/cart/index')) ?>"
         title="<?= $escaper->escapeHtmlAttr(__('View cart')) ?>"
@@ -64,11 +64,12 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
 </a>
 <?php endif ?>
 <script>
+    <?php
     /**
      * Taken from initHeader()
      * The button's functionality should not rely on the fact that it is a descendant of
      * the header element. It should function independently.
-     */
+     */?>
     function initCartButton() {
         return {
             cart: {},
