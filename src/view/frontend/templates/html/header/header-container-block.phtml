@@ -1,7 +1,12 @@
 <?php
 /** @var $block \Magento\Framework\View\Element\Template */
+// Header is sticky up to medium
+$stickyClass = 'sticky top-0 lg:relative lg:top-auto border-b lg:border-none drop-shadow-sm lg:drop-shadow-none';
+
+// Header is sticky in desktop view as well
+//$stickyClass = 'sticky top-0';
 ?>
-<div x-data="stickyHeader()" class="z-10 transition ease-in-out sticky top-0 transform-gpu lg:translate-y-0" :class="isHidden ? '-translate-y-full' : 'translate-y-0'" @scroll.window="scroll">
+<div x-data="stickyHeader()" class="z-50 transition ease-in-out transform-gpu lg:translate-y-0 <?= $stickyClass ?>" :class="isHidden ? '-translate-y-full' : 'translate-y-0'" @scroll.window.debounce="scroll">
 <?= $block->getChildHtml() ?>
 </div>
 <script>
