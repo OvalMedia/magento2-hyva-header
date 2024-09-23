@@ -18,12 +18,12 @@
             Maybe 'left', 'right' and 'center' are not really suitable as they are moved around
             anyway.
         -->
-        <referenceContainer name="header.container" htmlTag="header" htmlClass="page-header">
+        <referenceContainer name="header.container" htmlTag="header" htmlClass="page-header bg-white">
             <container name="header.content" htmlTag="div" htmlId="header" htmlClass="flex relative z-30 w-full border-b shadow bg-container-lighter border-container-lighter">
                 <container name="header.content.inner" htmlTag="div" htmlClass="container flex flex-wrap lg:flex-nowrap items-center justify-between w-full px-6 py-3 mx-auto mt-0">
-                    <container name="header.content.left" htmlTag="div" htmlClass="w-1/3 lg:w-1/5 order-2 lg:order-1 flex md:block items-center md:items-start" />
-                    <container name="header.content.center" htmlTag="div" htmlClass="w-1/3 lg:w-3/5 lg:order-2" />
-                    <container name="header.content.right" htmlTag="div" htmlClass="w-1/3 lg:w-1/5 order-3" />
+                    <container name="header.content.left" htmlTag="div" htmlClass="header-left w-1/3 lg:w-1/5 order-2 lg:order-1 flex md:block items-center md:items-start" before="-" />
+                    <container name="header.content.center" htmlTag="div" htmlClass="header-center w-1/3 lg:w-3/5 lg:order-2" after="header.content.left" />
+                    <container name="header.content.right" htmlTag="div" htmlClass="header-right w-1/3 lg:w-1/5 order-3" after="header.content.right" />
                 </container>
             </container>
         </referenceContainer>
@@ -58,6 +58,7 @@
             <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
                 <arguments>
                     <argument name="css_class" xsi:type="string">header-links flex items-center h-full justify-end</argument>
+                    <argument name="item_class" xsi:type="string">px-1</argument>
                 </arguments>
             </block>
         </referenceContainer>
