@@ -4,7 +4,11 @@
         Converts the HTML tags from 'header.container' so it's contents can be rendered inside a block HTML.
     -->
     <referenceContainer name="page.wrapper">
-        <block name="header.container.block" as="header_container_block" before="-" template="Hyva_Header::html/header/header-container-block.phtml"/>
+        <block name="header.container.block" as="header_container_block" before="-" template="Hyva_Header::html/header/header-container-block.phtml">
+            <arguments>
+                <argument name="class" xsi:type="string">border-b lg:border-none drop-shadow-sm lg:drop-shadow-none</argument>
+            </arguments>
+        </block>
     </referenceContainer>
     <move element="header.container" destination="header.container.block"/>
 </layout>
