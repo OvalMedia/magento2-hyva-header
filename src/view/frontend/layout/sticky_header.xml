@@ -6,7 +6,11 @@
     <referenceContainer name="page.wrapper">
         <block name="header.container.block" as="header_container_block" before="-" template="Hyva_Header::html/header/header-container-block.phtml">
             <arguments>
+                <!-- Additional classes for the sticky container -->
                 <argument name="class" xsi:type="string">border-b lg:border-none drop-shadow-sm lg:drop-shadow-none</argument>
+
+                <!-- Class for the sticky state -->
+                <argument name="sticky_class" xsi:type="string">is_stuck</argument>
             </arguments>
         </block>
     </referenceContainer>

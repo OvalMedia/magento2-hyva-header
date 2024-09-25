@@ -3,14 +3,14 @@
 // Header is sticky up to medium
 $class = 'sticky top-0 lg:relative lg:top-auto';
 
+// Header is sticky in desktop view as well
+// $class = 'sticky top-0';
+
 if ($additionalClasses = $block->getClass()) {
     $class .= ' ' . $additionalClasses;
 }
-
-// Header is sticky in desktop view as well
-//$class = 'sticky top-0';
 ?>
-<div x-data="stickyHeader()" class="z-50 transition ease-in-out transform-gpu lg:translate-y-0 <?= $class ?>" :class="isHidden ? '-translate-y-full' : 'translate-y-0'" @scroll.window.debounce="scroll">
+<div x-data="stickyHeader()" class="z-50 transition ease-in-out transform-gpu lg:translate-y-0 <?= $class ?>" :class="stickyClass" @scroll.window.debounce="scroll">
 <?= $block->getChildHtml() ?>
 </div>
 <script>
@@ -18,10 +18,13 @@ function stickyHeader() {
     return {
         lastOffset: 0,
         isHidden: false,
+        stickyClass: '',
         scroll() {
-            let offset = window.pageYOffset;
+            let offset = window.pageYOffset,
+                isStuck = this.$el.offsetTop - this.$el.scrollHeight;
             this.isHidden = offset > this.lastOffset;
             this.lastOffset = offset;
+            this.stickyClass = (isStuck > 0 ? '<?= $block->getStickyClass() ?>' : '');
         }
     }
 }
